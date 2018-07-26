@@ -5,6 +5,9 @@ public class ChangeColour : MonoBehaviour {
 
 
 	public float respawnDelay;
+	public AudioClip pickupSound;
+	public AudioSource audioSource;
+	public float volume = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +29,7 @@ public class ChangeColour : MonoBehaviour {
 			//other.GetComponent<Renderer> ().material.color = this.GetComponent<Renderer>().material.GetColor ("_Color");
 			//gameObject.SetActive (false);
 			Debug.Log(other.GetComponent<Renderer>().material.color + " is new color");
+			audioSource.PlayOneShot (pickupSound, volume);
 			StartCoroutine (Respawn (respawnDelay));
 
 			}
