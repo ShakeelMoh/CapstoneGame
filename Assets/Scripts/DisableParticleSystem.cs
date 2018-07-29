@@ -6,7 +6,9 @@ public class DisableParticleSystem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		gameObject.GetComponent<ParticleSystem> ().Stop ();
+
 	}
 
 }
