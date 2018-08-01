@@ -39,8 +39,10 @@ public class ChangeColour : MonoBehaviour {
 	IEnumerator Respawn(float respawnDelay){
 		gameObject.GetComponent<Renderer> ().enabled = false;
 		gameObject.GetComponent<Collider> ().enabled = false;
+		gameObject.GetComponent<ParticleSystem> ().Stop ();
 		yield return new WaitForSeconds (respawnDelay);
 		Debug.Log ("Respawning");
+		gameObject.GetComponent<ParticleSystem> ().Play ();
 		gameObject.GetComponent<Renderer> ().enabled = true;
 		gameObject.GetComponent<Collider> ().enabled = true;
 
