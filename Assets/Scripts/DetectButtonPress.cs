@@ -22,6 +22,9 @@ public class DetectButtonPress : MonoBehaviour {
 	private ParticleSystem psSmoke1;
 	private ParticleSystem psSmoke2;
 
+	public GameObject onButton;
+	public GameObject offButton;
+
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource> ();
@@ -35,6 +38,10 @@ public class DetectButtonPress : MonoBehaviour {
 			psActivated2 = portal2.transform.Find ("Activated").GetComponent<ParticleSystem> ();
 			psSmoke2 = portal2.transform.Find ("Smoke").GetComponent<ParticleSystem> ();
 		}
+
+		offButton.GetComponent<Renderer> ().material.color = Color.red;
+		onButton.GetComponent<Renderer> ().material.color = Color.white;
+
 	}
 	
 	// Update is called once per frame
@@ -48,6 +55,16 @@ public class DetectButtonPress : MonoBehaviour {
 				Debug.Log ("Button pressed");
 				audioSource.PlayOneShot (activateSound);
 
+				//CHANGE BUTTON COLOURS
+				if (offButton.GetComponent<Renderer> ().material.color == Color.red) {
+					offButton.GetComponent<Renderer> ().material.color = Color.white;
+					onButton.GetComponent<Renderer> ().material.color = Color.green;
+
+				} else if (onButton.GetComponent<Renderer> ().material.color == Color.green) {
+					onButton.GetComponent<Renderer> ().material.color = Color.white;
+					offButton.GetComponent<Renderer> ().material.color = Color.red;
+
+				}
 				if (portal1 != null && portal2 != null) {
 					Debug.Log ("TRUE");
 					if (psActivated1.isStopped) {
