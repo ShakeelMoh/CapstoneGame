@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198350010725389332}
   - component: {fileID: 199837304044983986}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,8 +70,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1781978013166304}
   m_LocalRotation: {x: -0.25485748, y: -0.32012033, z: 0.2186045, w: 0.8858797}
-  m_LocalPosition: {x: 54.56, y: 1.8882802, z: 73}
-  m_LocalScale: {x: 0.58034855, y: 0.5803485, z: 0.5803485}
+  m_LocalPosition: {x: 84.03514, y: -3.866, z: 29.439999}
+  m_LocalScale: {x: 0.5803486, y: 0.5803486, z: 0.5803486}
   m_Children:
   - {fileID: 4145516479119196}
   m_Father: {fileID: 0}
@@ -91,7 +91,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: fb04f5443a8f4f142b73a096058524b6, type: 2}
+  - {fileID: 2100000, guid: b947a32471c420d4b8bcd0df3713ea15, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,6 +240,8 @@ MonoBehaviour:
   pickupSound: {fileID: 8300000, guid: 82b1e8427fead85448f24a27c07cba8c, type: 3}
   audioSource: {fileID: 82080519421042280}
   volume: 1
+  respawn: 0
+  lives: 1
 --- !u!114 &114563523185581268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,7 +314,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1916337815
+  randomSeed: -211980444
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -402,7 +404,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.09558821, b: 0.787931, a: 1}
+      maxColor: {r: 0, g: 0.29803923, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

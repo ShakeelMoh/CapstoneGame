@@ -8,10 +8,13 @@ public class ChangeColour : MonoBehaviour {
 	public AudioClip pickupSound;
 	public AudioSource audioSource;
 	public float volume = 1.0f;
+	public bool respawn;
+	public int lives;
 
 	// Use this for initialization
 	void Start () {
 		respawnDelay = 3.0f;
+		 
 	}
 	
 	// Update is called once per frame
@@ -30,7 +33,10 @@ public class ChangeColour : MonoBehaviour {
 			//gameObject.SetActive (false);
 			Debug.Log(other.GetComponent<Renderer>().material.color + " is new color");
 			audioSource.PlayOneShot (pickupSound, volume);
+	
 			StartCoroutine (Respawn (respawnDelay));
+			
+
 
 			}
 
@@ -41,11 +47,20 @@ public class ChangeColour : MonoBehaviour {
 		gameObject.GetComponent<Renderer> ().enabled = false;
 		gameObject.GetComponent<Collider> ().enabled = false;
 		gameObject.transform.Find("Glow").GetComponent<ParticleSystem> ().Stop ();
-		yield return new WaitForSeconds (respawnDelay);
-		Debug.Log ("Respawning");
-		gameObject.transform.Find("Glow").GetComponent<ParticleSystem> ().Play ();
-		gameObject.GetComponent<Renderer> ().enabled = true;
-		gameObject.GetComponent<Collider> ().enabled = true;
+
+		if (respawn) {
+			if (lives > 0) {
+				lives--;
+				yield return new WaitForSeconds (respawnDelay);
+				Debug.Log ("Respawning");
+				gameObject.transform.Find ("Glow").GetComponent<ParticleSystem> ().Play ();
+				gameObject.GetComponent<Renderer> ().enabled = true;
+				gameObject.GetComponent<Collider> ().enabled = true;
+
+			}
+		}
+
+
 
 
 	}

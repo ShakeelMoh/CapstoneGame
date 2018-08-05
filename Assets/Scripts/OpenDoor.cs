@@ -26,18 +26,19 @@ public class OpenDoor : MonoBehaviour {
 
 		distance = Vector3.Distance(transform.position, player1.transform.position);
 		distance2 = Vector3.Distance(transform.position, player2.transform.position);
-		if (distanceToOpen >= distance || distanceToOpen >= distance2){
+		//if (distanceToOpen >= distance || distanceToOpen >= distance2){
 			if (player1.transform.Find("Indicator").GetComponent<Renderer>().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))){
-			//if (obj.GetComponent<Renderer> ().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))) {
-				anim.SetBool (characterNearbyHash, true);
-				if (playSound) {
-					audioSource.PlayOneShot (openSound, volume);
-					playSound = false;
+
+				if (player2.transform.Find ("Indicator").GetComponent<Renderer> ().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))) {
+					//if (obj.GetComponent<Renderer> ().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))) {
+					anim.SetBool (characterNearbyHash, true);
+					if (playSound) {
+						audioSource.PlayOneShot (openSound, volume);
+						playSound = false;
+					}
 				}
 
-			}
-
-		}else{
+			} else{
 			//Debug.Log(obj.GetComponent<Renderer> ().material.color + "======" + transform.Find("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"));
 			anim.SetBool (characterNearbyHash, false);
 			playSound = true;
