@@ -19,7 +19,8 @@ public class PortalTeleporter : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		other.transform.position = otherPortal.transform.position + otherPortal.transform.up * placementOffset;
+		Debug.Log ("Colliding");
+		other.transform.position = otherPortal.transform.position - otherPortal.transform.up * placementOffset;
 
 	}
 }
