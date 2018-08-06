@@ -5,6 +5,9 @@ using UnityEngine;
 //This script starts a particle effect on portal if player is able to go through it
 public class ActivatePortal : MonoBehaviour {
 
+
+	public bool active;
+
 	public GameObject player1;
 	public GameObject player2;
 
@@ -19,6 +22,7 @@ public class ActivatePortal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		active = false;
 		psActivated1 = portal1.transform.Find ("Activated").GetComponent<ParticleSystem> ();
 		psActivated2 = portal2.transform.Find ("Activated").GetComponent<ParticleSystem> ();
 		psSmoke1 = portal1.transform.Find ("Smoke").GetComponent<ParticleSystem> ();
@@ -30,6 +34,8 @@ public class ActivatePortal : MonoBehaviour {
 	void Update () {
 
 		if (gameObject.GetComponent<Renderer> ().material.color == player1.transform.Find ("Indicator").GetComponent<Renderer> ().material.color || gameObject.GetComponent<Renderer> ().material.color == player2.transform.Find ("Indicator").GetComponent<Renderer> ().material.color) {
+			active = true;
+			portal1.GetComponent<PortalTeleporter> ().enabled = true;
 			psActivated1.Play ();
 			psActivated2.Play ();
 			if (!psSmoke1.isPlaying) {
@@ -40,6 +46,8 @@ public class ActivatePortal : MonoBehaviour {
 			}
 
 		} else {
+			portal1.GetComponent<PortalTeleporter> ().enabled = false;
+			active = false;
 			if (psSmoke1.isPlaying) {
 				psSmoke1.Stop ();
 			}

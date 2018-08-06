@@ -6,6 +6,7 @@ using UnityEngine;
 public class PortalTeleporter : MonoBehaviour {
 
 	public GameObject otherPortal;
+	public GameObject colourChecker;
 	public float placementOffset;
 
 	// Use this for initialization
@@ -19,8 +20,8 @@ public class PortalTeleporter : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log ("Colliding");
-		other.transform.position = otherPortal.transform.position - otherPortal.transform.up * placementOffset;
-
+		if (colourChecker.GetComponent<ActivatePortal> ().active) {
+			other.transform.position = otherPortal.transform.position - otherPortal.transform.up * placementOffset;
+		}
 	}
 }
