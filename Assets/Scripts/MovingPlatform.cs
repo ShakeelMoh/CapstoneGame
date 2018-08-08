@@ -14,14 +14,23 @@ public class MovingPlatform : MonoBehaviour {
 	public float speed;//How long it takes to move platform
 	public float loopTime;//How long it waits at position
 
+	public bool pressurePlate;
+	public bool activatedPlatform;
+
 	void Start () {
 		ChangeTarget ();
 	}
 	
 
 	void FixedUpdate () {//Fixed update runs at consistent interval. Update runs at fps interval.
+		if (!pressurePlate) {
+			movingPlatform.position = Vector3.Lerp (movingPlatform.position, newPositon, speed * Time.deltaTime);
+		} else {
+			if (activatedPlatform) {
+				movingPlatform.position = Vector3.Lerp (movingPlatform.position, newPositon, speed * Time.deltaTime);
+			}
+		}
 
-		movingPlatform.position = Vector3.Lerp (movingPlatform.position, newPositon, speed * Time.deltaTime);
 	}
 
 	void ChangeTarget(){

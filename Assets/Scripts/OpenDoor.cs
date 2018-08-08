@@ -14,11 +14,15 @@ public class OpenDoor : MonoBehaviour {
 	public AudioSource audioSource;
 	public float volume = 1.0f;
 	bool playSound;
+
+	public bool pressurePlate;
+	public bool activateDoor;
 	// Use this for initialization
 	void Start () {
 		anim = gameObject.GetComponent<Animator> ();
 		audioSource = GetComponent<AudioSource> ();
 		playSound = true;
+		activateDoor = false;
 	}
 	
 	// Update is called once per frame
@@ -27,23 +31,34 @@ public class OpenDoor : MonoBehaviour {
 		distance = Vector3.Distance(transform.position, player1.transform.position);
 		distance2 = Vector3.Distance(transform.position, player2.transform.position);
 		//if (distanceToOpen >= distance || distanceToOpen >= distance2){
-			if (player1.transform.Find("Indicator").GetComponent<Renderer>().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))){
-
-				if (player2.transform.Find ("Indicator").GetComponent<Renderer> ().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))) {
-					//if (obj.GetComponent<Renderer> ().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))) {
-					anim.SetBool (characterNearbyHash, true);
-					if (playSound) {
-						audioSource.PlayOneShot (openSound, volume);
-						playSound = false;
-					}
+		if (player1.transform.Find ("Indicator").GetComponent<Renderer> ().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))) {
+			if (player2.transform.Find ("Indicator").GetComponent<Renderer> ().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))) {
+				//if (obj.GetComponent<Renderer> ().material.color.Equals (gameObject.transform.Find ("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"))) {
+				anim.SetBool (characterNearbyHash, true);
+				if (playSound) {
+					audioSource.PlayOneShot (openSound, volume);
+					playSound = false;
 				}
+			}
 
-			} else{
+		} else {
 			//Debug.Log(obj.GetComponent<Renderer> ().material.color + "======" + transform.Find("door_2_left").GetComponent<Renderer> ().material.GetColor ("_Color"));
 			anim.SetBool (characterNearbyHash, false);
 			playSound = true;
-			
 		}
 
+
+		if (pressurePlate) {
+			if (activateDoor) {
+				Debug.Log ("Open door");
+				anim.SetBool (characterNearbyHash, true);
+			} else {
+				Debug.Log ("Close Door");
+				anim.SetBool (characterNearbyHash, false);
+			}
+		}
+		
+
 	}
+
 }
