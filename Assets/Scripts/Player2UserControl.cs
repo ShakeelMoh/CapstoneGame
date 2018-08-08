@@ -13,6 +13,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		private Vector3 m_Move;
 		private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
+		//SHAKEEL EDIT
+		public int jumpState;
 
 		private void Start()
 		{
@@ -38,6 +40,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (!m_Jump)
 			{
 				m_Jump = CrossPlatformInputManager.GetButtonDown("Jump2");
+				if (m_Jump) {
+					jumpState++;
+				}
+			}
+			if (m_Character.m_IsGrounded) {
+				jumpState = 0;
 			}
 		}
 
@@ -68,7 +76,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			#endif
 
 			// pass all parameters to the character control script
-			m_Character.Move(m_Move, crouch, m_Jump);
+			m_Character.Move(m_Move, crouch, m_Jump, jumpState);
 			m_Jump = false;
 		}
 	}

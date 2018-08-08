@@ -18,7 +18,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
-		bool m_IsGrounded;
+		public bool m_IsGrounded;
 		float m_OrigGroundCheckDistance;
 		const float k_Half = 0.5f;
 		float m_TurnAmount;
@@ -43,7 +43,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
-		public void Move(Vector3 move, bool crouch, bool jump)
+		public void Move(Vector3 move, bool crouch, bool jump, int jumpState = 0)
 		{
 
 			// convert the world relative moveInput vector into a local-relative
@@ -59,6 +59,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			ApplyExtraTurnRotation();
 
 			// control and velocity handling is different when grounded and airborne:
+
+			if (jump == true && jumpState < 2) {
+				HandleGroundedMovement (crouch, jump);
+			}
+
 			if (m_IsGrounded)
 			{
 				HandleGroundedMovement(crouch, jump);
@@ -155,18 +160,23 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		void HandleAirborneMovement()
 		{
+
+			//Vector3 airMove = new Vector3 (move.x * 6f, m_Rigidbody.velocity.y, move.z * 6f);
+			//Debug.Log ((move.x * 6f) + " _-----_ " + (move.z * 6f));
+			//m_Rigidbody.velocity = Vector3.Lerp (m_Rigidbody.velocity, airMove, Time.deltaTime * 2f);
 			// apply extra gravity from multiplier:
 			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
 			m_Rigidbody.AddForce(extraGravityForce);
 
 			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
+
 		}
 
 
 		void HandleGroundedMovement(bool crouch, bool jump)
 		{
 			// check whether conditions are right to allow a jump:
-			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+			if (jump && !crouch)
 			{
 				// jump!
 				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
