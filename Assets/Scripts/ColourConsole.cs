@@ -25,14 +25,18 @@ public class ColourConsole : MonoBehaviour {
 	private ParticleSystem psSmoke1;
 	private ParticleSystem psSmoke2;
 
-	public Color[] colors = {Color.red, Color.blue, Color.yellow, Color.green, Color.magenta};
+	public GameObject colourChecker;
+
+	public Material green;
+	public Color[] colors;
+	//public Color[] colors = {Color.red, Color.blue, Color.yellow, Color.green, Color.magenta};
 	public Color currentColor;
 	public GameObject button;
 	int colorCounter = 0;
 
 	// Use this for initialization
 	void Start () {
-		
+		colors = new Color[]{Color.red, Color.blue, Color.yellow, Color.magenta, green.color };
 		audioSource = GetComponent<AudioSource> ();
 
 		if (portal1 != null) {
@@ -69,6 +73,7 @@ public class ColourConsole : MonoBehaviour {
 					var main = psSmoke1.main;
 					main.startColor = colors [colorCounter];
 
+					colourChecker.GetComponent<Renderer> ().material.color = colors [colorCounter];
 
 
 					main = psSmoke2.main;

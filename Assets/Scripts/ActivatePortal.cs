@@ -20,6 +20,7 @@ public class ActivatePortal : MonoBehaviour {
 	private ParticleSystem psSmoke1;
 	private ParticleSystem psSmoke2;
 
+
 	// Use this for initialization
 	void Start () {
 		active = false;
@@ -34,8 +35,10 @@ public class ActivatePortal : MonoBehaviour {
 	void Update () {
 
 		if (gameObject.GetComponent<Renderer> ().material.color == player1.transform.Find ("Indicator").GetComponent<Renderer> ().material.color || gameObject.GetComponent<Renderer> ().material.color == player2.transform.Find ("Indicator").GetComponent<Renderer> ().material.color) {
+			Debug.Log ("Portal activated");
 			active = true;
 			portal1.GetComponent<PortalTeleporter> ().enabled = true;
+			portal2.GetComponent<PortalTeleporter> ().enabled = true;
 			psActivated1.Play ();
 			psActivated2.Play ();
 			if (!psSmoke1.isPlaying) {
@@ -47,6 +50,7 @@ public class ActivatePortal : MonoBehaviour {
 
 		} else {
 			portal1.GetComponent<PortalTeleporter> ().enabled = false;
+			portal2.GetComponent<PortalTeleporter> ().enabled = false;
 			active = false;
 			if (psSmoke1.isPlaying) {
 				psSmoke1.Stop ();

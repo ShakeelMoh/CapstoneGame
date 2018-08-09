@@ -3617,6 +3617,8 @@ MonoBehaviour:
   openSound: {fileID: 0}
   audioSource: {fileID: 0}
   volume: 1
+  pressurePlate: 0
+  activateDoor: 0
 --- !u!114 &114974494924604436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3633,6 +3635,8 @@ MonoBehaviour:
   openSound: {fileID: 8300000, guid: 3af3f53d654b32e468d93c646d43eaf7, type: 3}
   audioSource: {fileID: 82182485513233378}
   volume: 1
+  pressurePlate: 0
+  activateDoor: 0
 --- !u!198 &198461720125146384
 ParticleSystem:
   m_ObjectHideFlags: 1
