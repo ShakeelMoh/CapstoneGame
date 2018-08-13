@@ -20,6 +20,13 @@ public class MultipleTargetCamera : MonoBehaviour {
 		cam = GetComponent<Camera> ();
 	}
 
+	public void setOffset(Vector3 newOffset){
+		offset = newOffset;
+	}
+	public Vector3 getOffset(){
+		return offset;
+	}
+
 	void LateUpdate(){
 
 		if (targets.Count == 0) {
