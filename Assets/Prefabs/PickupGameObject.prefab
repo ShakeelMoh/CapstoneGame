@@ -145,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624273632309812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 61.82805, y: -0.011197777, z: 69.90914}
+  m_LocalPosition: {x: 36.98771, y: 5.6478534, z: -115.8167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4084937457926438}
@@ -369,9 +369,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnDelay: 3
-  pickupSound: {fileID: 8300000, guid: 82b1e8427fead85448f24a27c07cba8c, type: 3}
+  pickupSound: {fileID: 8300000, guid: 4f8b1f35f678b67448c9bc9ac9dce788, type: 3}
   audioSource: {fileID: 82319868140874048}
   volume: 1
+  respawn: 0
+  lives: 0
 --- !u!114 &114523616093950904
 MonoBehaviour:
   m_ObjectHideFlags: 1

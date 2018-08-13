@@ -29,6 +29,7 @@ public class ColourConsole : MonoBehaviour {
 
 	public Material green;
 	public Material yellow;
+	public Material blue;
 	public Color[] colors;
 	//public Color[] colors = {Color.red, Color.blue, Color.yellow, Color.green, Color.magenta};
 	public Color currentColor;
@@ -37,7 +38,7 @@ public class ColourConsole : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		colors = new Color[]{Color.red, Color.blue, yellow.color, Color.magenta, green.color };
+		colors = new Color[]{Color.red, blue.color, yellow.color, Color.magenta, green.color };
 		audioSource = GetComponent<AudioSource> ();
 
 		if (portal1 != null) {
