@@ -14,6 +14,9 @@ public class MultipleTargetCamera : MonoBehaviour {
 	public float maxZoom = 10f;//Field of view value
 	public float zoomLimiter = 50f;
 
+	public int maxX;
+	public int maxY;
+
 	private Camera cam;
 
 	void Start(){
@@ -41,6 +44,15 @@ public class MultipleTargetCamera : MonoBehaviour {
 
 		Vector3 centrePoint = GetCentrePoint ();
 		Vector3 newPosition = centrePoint + offset;
+		if (newPosition.x > 36) {
+			newPosition.x = 36;
+		}
+		if (newPosition.x < 33) {
+			//newPosition.x = 33;
+		}
+		if (newPosition.y > 9) {
+			newPosition.y = 9;
+		}
 		transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime); 
 
 	}
