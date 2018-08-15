@@ -14,6 +14,7 @@ public class MultipleTargetCamera : MonoBehaviour {
 	public float maxZoom = 10f;//Field of view value
 	public float zoomLimiter = 50f;
 
+
 	public int maxX;
 	public int maxY;
 

@@ -13,6 +13,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		private Vector3 m_Move;
 		private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
+		public GameObject otherPlayer;
+
 		//SHAKEEL EDIT
 		public int jumpState;
 
@@ -46,6 +48,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 			if (m_Character.m_IsGrounded) {
 				jumpState = 0;
+			}
+			if (CrossPlatformInputManager.GetButtonDown ("Reset2")) {
+				transform.position = otherPlayer.transform.position + new Vector3 (0, 5, 0);
+
 			}
 		}
 

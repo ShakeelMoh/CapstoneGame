@@ -13,13 +13,12 @@ public class SplitScreenSwitch : MonoBehaviour {
 	public GameObject singleCam;
 	public Image screenDivider;
 
-	void OnCollisionEnter(Collision other){
+	void OnTriggerEnter(Collider other){
 
 		//only do if the active camera is the single cam
 		//sets split cams on and turns off single cam
 		if (singleCam.activeSelf) {
-
-
+			Debug.Log ("Changing cam");
 			splitCam1.SetActive (true);
 			splitCam2.SetActive (true);
 

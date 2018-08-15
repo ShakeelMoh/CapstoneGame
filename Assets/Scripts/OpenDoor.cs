@@ -63,10 +63,10 @@ public class OpenDoor : MonoBehaviour {
 
 			if (pressurePlate) {
 				if (activateDoor) {
-					Debug.Log ("Open door");
+					//Debug.Log ("Open door");
 					anim.SetBool (characterNearbyHash, true);
 				} else {
-					Debug.Log ("Close Door");
+					//Debug.Log ("Close Door");
 					anim.SetBool (characterNearbyHash, false);
 				}
 			}
