@@ -11,18 +11,33 @@ public class ChangeColour : MonoBehaviour {
 	public bool respawn;
 	public int lives;
 
+	public bool rotateColours;
+	public int interval;
+	public Material green;
+	public Material yellow;
+	public Material blue;
+	public Color[] colors;
+	public ParticleSystem glow;
+
+	int currentColour = 0;
+
 	// Use this for initialization
 	void Start () {
+		if (blue != null && green != null && yellow != null) {
+			colors = new Color[]{ Color.red, blue.color, yellow.color, Color.magenta, green.color };
+		}
 		respawnDelay = 3.0f;
-		 
+		if (rotateColours) {
+			StartCoroutine (colourChange (interval));
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-
-
+		
 	}
+
+
 
 	void OnTriggerEnter(Collider other){
 
@@ -59,9 +74,27 @@ public class ChangeColour : MonoBehaviour {
 
 			}
 		}
-
-
-
-
 	}
+
+	IEnumerator colourChange(int interval){
+		while (true) {
+			if (currentColour > colors.Length - 1) {
+				currentColour = 0;
+			}
+			this.GetComponent<Renderer> ().material.color = colors [currentColour];
+			var main = glow.main;
+			Debug.Log ("Current colour rgb" + colors [currentColour].ToString());
+			float red = colors [currentColour].r + 0.1f;
+			float green = colors [currentColour].g + 0.08f;
+			float blue = colors [currentColour].b;
+			Color glowRGB = new Color (red, green, blue, 1.0f);
+			Debug.Log (red + " " + green + " " + blue);
+			main.startColor = glowRGB;
+
+			yield return new WaitForSeconds (interval);
+			currentColour++;
+
+		}
+	}
+
 }
