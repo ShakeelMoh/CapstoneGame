@@ -7,7 +7,7 @@ public class DetectButtonPress : MonoBehaviour {
 	public GameObject player1;
 	public GameObject player2;
 	private float distanceToOpen = 5;
-
+	public GameObject door;
 	private float distance;
 	private float distance2;
 	public AudioClip activateSound;
@@ -39,6 +39,10 @@ public class DetectButtonPress : MonoBehaviour {
 			psSmoke2 = portal2.transform.Find ("Smoke").GetComponent<ParticleSystem> ();
 		}
 
+		if (door != null) {
+			door.GetComponent<OpenDoor> ().activateDoor = false;
+		}
+
 		offButton.GetComponent<Renderer> ().material.color = Color.red;
 		onButton.GetComponent<Renderer> ().material.color = Color.white;
 
@@ -55,6 +59,8 @@ public class DetectButtonPress : MonoBehaviour {
 				Debug.Log ("Button pressed");
 				audioSource.PlayOneShot (activateSound);
 
+
+
 				//CHANGE BUTTON COLOURS
 				if (offButton.GetComponent<Renderer> ().material.color == Color.red) {
 					offButton.GetComponent<Renderer> ().material.color = Color.white;
@@ -65,6 +71,16 @@ public class DetectButtonPress : MonoBehaviour {
 					offButton.GetComponent<Renderer> ().material.color = Color.red;
 
 				}
+
+				if (door != null) {
+					if (door.GetComponent<OpenDoor> ().activateDoor == true) {
+						door.GetComponent<OpenDoor> ().activateDoor = false;
+					} else {
+						door.GetComponent<OpenDoor> ().activateDoor = true;
+					}
+
+				}
+					
 				if (portal1 != null && portal2 != null) {
 					Debug.Log ("TRUE");
 					if (psActivated1.isStopped) {
