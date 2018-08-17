@@ -3,7 +3,7 @@
 private var anim : Animator;
 var character : GameObject;
 var character2 : GameObject;
-var distanceToOpen:float = 5;
+var distanceToOpen:float = 10;
 
 private var characterNearbyHash : int = Animator.StringToHash("character_nearby");
 
