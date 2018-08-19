@@ -46,7 +46,7 @@ public class ChangeColour : MonoBehaviour {
 			//other.transform.GetChild("Indicator").GetComponent<Renderer>().material.color = this.GetComponent<Renderer>().material.GetColor ("_Color");
 			//other.GetComponent<Renderer> ().material.color = this.GetComponent<Renderer>().material.GetColor ("_Color");
 			//gameObject.SetActive (false);
-			Debug.Log(other.GetComponent<Renderer>().material.color + " is new color");
+			//Debug.Log(other.GetComponent<Renderer>().material.color + " is new color");
 			audioSource.PlayOneShot (pickupSound, volume);
 	
 			StartCoroutine (Respawn (respawnDelay));
@@ -83,12 +83,12 @@ public class ChangeColour : MonoBehaviour {
 			}
 			this.GetComponent<Renderer> ().material.color = colors [currentColour];
 			var main = glow.main;
-			Debug.Log ("Current colour rgb" + colors [currentColour].ToString());
+			//Debug.Log ("Current colour rgb" + colors [currentColour].ToString());
 			float red = colors [currentColour].r + 0.1f;
 			float green = colors [currentColour].g + 0.08f;
 			float blue = colors [currentColour].b;
 			Color glowRGB = new Color (red, green, blue, 1.0f);
-			Debug.Log (red + " " + green + " " + blue);
+			//Debug.Log (red + " " + green + " " + blue);
 			main.startColor = glowRGB;
 
 			yield return new WaitForSeconds (interval);

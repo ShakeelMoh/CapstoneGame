@@ -49,7 +49,7 @@ public class MultipleTargetCamera : MonoBehaviour {
 			newPosition.x = 36;
 		}
 		if (newPosition.x < 33) {
-			//newPosition.x = 33;
+			newPosition.x = 33;
 		}
 		if (newPosition.y > 9) {
 			newPosition.y = 9;

@@ -6,6 +6,7 @@ public class Elevator : MonoBehaviour {
 
 	public GameObject door;
 	public GameObject otherDoor;
+
 	private int touching;
 	public float closeDoorWait = 1.5f;
 	// Use this for initialization
@@ -39,6 +40,7 @@ public class Elevator : MonoBehaviour {
 		if (touching == 2) {
 			door.GetComponent<OpenDoor> ().activateDoor = false;
 			door.GetComponent<OpenDoor> ().autoOpen = false;
+			this.GetComponent<ElevatorPlatform> ().activatedPlatform = true;
 		}
 	}
 }
