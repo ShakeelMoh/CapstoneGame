@@ -70,7 +70,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 			else
 			{
-				HandleAirborneMovement();
+				HandleAirborneMovement(move);
 			}
 
 			ScaleCapsuleForCrouching(crouch);
@@ -158,12 +158,21 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
-		void HandleAirborneMovement()
+		void HandleAirborneMovement(Vector3 move)
 		{
+			/*
+			Vector3 airMove = new Vector3 (move.x * 6f, m_Rigidbody.velocity.y, move.z * 6f);
+			Debug.Log ((move.x * 6f) + " _-----_ " + (move.z * 6f));
+			m_Rigidbody.velocity = Vector3.Lerp (m_Rigidbody.velocity, airMove, Time.deltaTime * 2f);
+			*/
 
-			//Vector3 airMove = new Vector3 (move.x * 6f, m_Rigidbody.velocity.y, move.z * 6f);
-			//Debug.Log ((move.x * 6f) + " _-----_ " + (move.z * 6f));
-			//m_Rigidbody.velocity = Vector3.Lerp (m_Rigidbody.velocity, airMove, Time.deltaTime * 2f);
+			/*
+			float h = Input.GetAxis ("Horizontal");
+			float v = Input.GetAxis ("Vertical");
+			Vector3 moveDirection = new Vector3 ((v * 15), 0, (h * -15));
+			this.GetComponent<Rigidbody>().AddForce (moveDirection);
+			*/
+
 			// apply extra gravity from multiplier:
 			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
 			m_Rigidbody.AddForce(extraGravityForce);

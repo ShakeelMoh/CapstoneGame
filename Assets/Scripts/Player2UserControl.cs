@@ -42,6 +42,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (!m_Jump)
 			{
 				m_Jump = CrossPlatformInputManager.GetButtonDown("Jump2");
+				float h = Input.GetAxis ("Horizontal2");
+				float v = Input.GetAxis ("Vertical2");
+				Vector3 moveDirection = new Vector3 ((v * 15), 0, (h * -15));
+				this.GetComponent<Rigidbody>().AddForce (moveDirection);
 				if (m_Jump) {
 					jumpState++;
 				}
