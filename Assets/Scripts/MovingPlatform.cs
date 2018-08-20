@@ -17,6 +17,7 @@ public class MovingPlatform : MonoBehaviour {
 	public bool pressurePlate;
 	public bool activatedPlatform;
 
+
 	void Start () {
 		ChangeTarget ();
 	}

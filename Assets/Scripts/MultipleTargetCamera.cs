@@ -22,6 +22,7 @@ public class MultipleTargetCamera : MonoBehaviour {
 
 	void Start(){
 		cam = GetComponent<Camera> ();
+		maxY = 9;
 	}
 
 	public void setOffset(Vector3 newOffset){
@@ -51,8 +52,8 @@ public class MultipleTargetCamera : MonoBehaviour {
 		if (newPosition.x < 33) {
 			newPosition.x = 33;
 		}
-		if (newPosition.y > 9) {
-			newPosition.y = 9;
+		if (newPosition.y > maxY) {
+			newPosition.y = maxY;
 		}
 		transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime); 
 
