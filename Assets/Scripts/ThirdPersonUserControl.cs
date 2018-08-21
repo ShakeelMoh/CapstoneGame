@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
@@ -19,11 +17,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		public GameObject levelTracker; //To keep track of current level
 		public GameObject levelSpawnAreas;
 		public int level;
+		public float airControl;//controls aircontrol
 		//SHAKEEL EDIT
 		public int jumpState;
         
         private void Start()
         {
+			airControl = 10;
             // get the transform of the main camera
             if (Camera.main != null)
             {
@@ -50,7 +50,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 				float h = Input.GetAxis ("Horizontal");
 				float v = Input.GetAxis ("Vertical");
-				Vector3 moveDirection = new Vector3 ((v * 15), 0, (h * -15));
+				Vector3 moveDirection = new Vector3 ((v * airControl), 0, (h * -(airControl)));
 				this.GetComponent<Rigidbody>().AddForce (moveDirection);
 				if (m_Jump) {
 					jumpState++;
@@ -64,8 +64,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 
 			if (CrossPlatformInputManager.GetButtonDown ("Reset1")) {
-				//Debug.Log (levelTracker.gameObject.GetComponent<LevelTracker>().level);
-				transform.position = otherPlayer.transform.position + new Vector3 (0, 5, 0);
+				int level = levelTracker.gameObject.GetComponent<LevelTracker> ().level;
+				transform.position = levelSpawnAreas.transform.Find (level + "").position;
+				//transform.position = otherPlayer.transform.position + new Vector3 (0, 5, 0);
 
 			}
         }

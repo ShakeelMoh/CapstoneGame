@@ -17,12 +17,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		public GameObject levelTracker; //To keep track of current level
 		public GameObject levelSpawnAreas;
 		public GameObject otherPlayer;
-
+		public float airControl;//controls aircontrol
 		//SHAKEEL EDIT
 		public int jumpState;
 
 		private void Start()
 		{
+			airControl = 10;
 			// get the transform of the main camera
 			if (Camera.main != null)
 			{
@@ -47,7 +48,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Jump = CrossPlatformInputManager.GetButtonDown("Jump2");
 				float h = Input.GetAxis ("Horizontal2");
 				float v = Input.GetAxis ("Vertical2");
-				Vector3 moveDirection = new Vector3 ((v * 15), 0, (h * -15));
+				Vector3 moveDirection = new Vector3 ((v * airControl), 0, (h * -(airControl)));
 				this.GetComponent<Rigidbody>().AddForce (moveDirection);
 				if (m_Jump) {
 					jumpState++;
