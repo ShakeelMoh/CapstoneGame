@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 //Changes colour of portal when button pressed
 public class ColourConsole : MonoBehaviour {
@@ -65,48 +66,91 @@ public class ColourConsole : MonoBehaviour {
 		distance = Vector3.Distance(transform.position, player1.transform.position);
 		distance2 = Vector3.Distance(transform.position, player2.transform.position);
 		if (distanceToOpen >= distance || distanceToOpen >= distance2) {
+			if (distanceToOpen >= distance) {
+				if (CrossPlatformInputManager.GetButtonDown ("Use")){
+					//Debug.Log ("Button pressed");
+					audioSource.PlayOneShot (activateSound);
+					if (colorCounter < colors.Length) {
+						button.GetComponent<Renderer> ().material.color = colors [colorCounter];
 
-			if (Input.GetKeyDown (KeyCode.E) || Input.GetKeyDown (KeyCode.L)) {
-				Debug.Log ("Button pressed");
-				audioSource.PlayOneShot (activateSound);
-				if (colorCounter < colors.Length) {
-					button.GetComponent<Renderer> ().material.color = colors [colorCounter];
+						var main = psSmoke1.main;
+						main.startColor = colors [colorCounter];
 
-					var main = psSmoke1.main;
-					main.startColor = colors [colorCounter];
-
-					colourChecker.GetComponent<Renderer> ().material.color = colors [colorCounter];
+						colourChecker.GetComponent<Renderer> ().material.color = colors [colorCounter];
 
 
-					main = psSmoke2.main;
-					main.startColor = colors [colorCounter];
+						main = psSmoke2.main;
+						main.startColor = colors [colorCounter];
 
-					main = psActivated1.main;
-					main.startColor = colors [colorCounter];
+						main = psActivated1.main;
+						main.startColor = colors [colorCounter];
 
-					main = psActivated2.main;
-					main.startColor = colors [colorCounter];
+						main = psActivated2.main;
+						main.startColor = colors [colorCounter];
 
-					main = baseColor1.main;
-					main.startColor = colors [colorCounter];
-					baseColor1.GetComponent<ParticleSystem>().Stop ();
-					baseColor1.GetComponent<ParticleSystem>().Clear ();
-					baseColor1.GetComponent<ParticleSystem>().Play ();
+						main = baseColor1.main;
+						main.startColor = colors [colorCounter];
+						baseColor1.GetComponent<ParticleSystem> ().Stop ();
+						baseColor1.GetComponent<ParticleSystem> ().Clear ();
+						baseColor1.GetComponent<ParticleSystem> ().Play ();
 
-					main = baseColor2.main;
-					main.startColor = colors [colorCounter];
-					baseColor2.GetComponent<ParticleSystem>().Stop ();
-					baseColor2.GetComponent<ParticleSystem> ().Clear ();
-					baseColor2.GetComponent<ParticleSystem>().Play ();
+						main = baseColor2.main;
+						main.startColor = colors [colorCounter];
+						baseColor2.GetComponent<ParticleSystem> ().Stop ();
+						baseColor2.GetComponent<ParticleSystem> ().Clear ();
+						baseColor2.GetComponent<ParticleSystem> ().Play ();
 
-					colorCounter++;
-				} else {
-					colorCounter = 0;
-					button.GetComponent<Renderer> ().material.color = colors [colorCounter];
+						colorCounter++;
+					} else {
+						colorCounter = 0;
+						button.GetComponent<Renderer> ().material.color = colors [colorCounter];
+					}
+
 				}
-
 			}
+			//Sorry for this...
+			if (distanceToOpen >= distance2) {
+				if (CrossPlatformInputManager.GetButtonDown ("Use2")){
+					//Debug.Log ("Button pressed");
+					audioSource.PlayOneShot (activateSound);
+					if (colorCounter < colors.Length) {
+						button.GetComponent<Renderer> ().material.color = colors [colorCounter];
 
+						var main = psSmoke1.main;
+						main.startColor = colors [colorCounter];
+
+						colourChecker.GetComponent<Renderer> ().material.color = colors [colorCounter];
+
+
+						main = psSmoke2.main;
+						main.startColor = colors [colorCounter];
+
+						main = psActivated1.main;
+						main.startColor = colors [colorCounter];
+
+						main = psActivated2.main;
+						main.startColor = colors [colorCounter];
+
+						main = baseColor1.main;
+						main.startColor = colors [colorCounter];
+						baseColor1.GetComponent<ParticleSystem> ().Stop ();
+						baseColor1.GetComponent<ParticleSystem> ().Clear ();
+						baseColor1.GetComponent<ParticleSystem> ().Play ();
+
+						main = baseColor2.main;
+						main.startColor = colors [colorCounter];
+						baseColor2.GetComponent<ParticleSystem> ().Stop ();
+						baseColor2.GetComponent<ParticleSystem> ().Clear ();
+						baseColor2.GetComponent<ParticleSystem> ().Play ();
+
+						colorCounter++;
+					} else {
+						colorCounter = 0;
+						button.GetComponent<Renderer> ().material.color = colors [colorCounter];
+					}
+
+				}
+			}
 		}
 
 	}

@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//using UnityStandardAssets.Characters.ThirdPerson;
 public class NextLevel : MonoBehaviour {
 
 	// Use this for initialization
 
 	bool changed;
 	public GameObject levelTracker;
+	public GameObject player1;
 	void Start () {
 		//level = levelTracker.GetComponent<LevelTracker> ().level;
 		changed = false;

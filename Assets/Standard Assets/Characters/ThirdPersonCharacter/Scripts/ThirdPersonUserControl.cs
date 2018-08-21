@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
@@ -14,7 +16,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
 		public GameObject otherPlayer;
-
+		public GameObject levelTracker; //To keep track of current level
+		public GameObject levelSpawnAreas;
+		public int level;
 		//SHAKEEL EDIT
 		public int jumpState;
         
@@ -60,6 +64,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 
 			if (CrossPlatformInputManager.GetButtonDown ("Reset1")) {
+				//Debug.Log (levelTracker.gameObject.GetComponent<LevelTracker>().level);
 				transform.position = otherPlayer.transform.position + new Vector3 (0, 5, 0);
 
 			}

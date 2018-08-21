@@ -13,6 +13,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		private Vector3 m_Move;
 		private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
+
+		public GameObject levelTracker; //To keep track of current level
+		public GameObject levelSpawnAreas;
 		public GameObject otherPlayer;
 
 		//SHAKEEL EDIT
@@ -54,7 +57,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				jumpState = 0;
 			}
 			if (CrossPlatformInputManager.GetButtonDown ("Reset2")) {
-				transform.position = otherPlayer.transform.position + new Vector3 (0, 5, 0);
+				int level = levelTracker.gameObject.GetComponent<LevelTracker> ().level;
+				transform.position = levelSpawnAreas.transform.Find (level + "").position;
+				//transform.position = otherPlayer.transform.position + new Vector3 (0, 5, 0);
 
 			}
 		}
