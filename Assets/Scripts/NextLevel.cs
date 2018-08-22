@@ -8,7 +8,6 @@ public class NextLevel : MonoBehaviour {
 
 	bool changed;
 	public GameObject levelTracker;
-	public GameObject player1;
 	void Start () {
 		//level = levelTracker.GetComponent<LevelTracker> ().level;
 		changed = false;

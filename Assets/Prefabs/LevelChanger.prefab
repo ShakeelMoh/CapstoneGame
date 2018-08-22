@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65305422305723744}
   - component: {fileID: 23467218013825618}
   - component: {fileID: 114692596600573732}
+  - component: {fileID: 114824983639523106}
   m_Layer: 0
   m_Name: LevelChanger
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1563766473916446}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.01248, y: 1.7218938, z: -108.3374}
+  m_LocalPosition: {x: 52.96805, y: 1.3888022, z: 82.409996}
   m_LocalScale: {x: 2.8189712, y: 2.8189704, z: 0.06940678}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,3 +109,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelTracker: {fileID: 0}
+  player1: {fileID: 0}
+--- !u!114 &114824983639523106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563766473916446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e148e9d39867a6f43ba4f2b1d79c58b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
