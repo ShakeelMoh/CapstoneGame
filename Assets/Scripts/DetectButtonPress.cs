@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 //Detects button press when within proximity to gameobject
 public class DetectButtonPress : MonoBehaviour {
 
@@ -51,81 +52,74 @@ public class DetectButtonPress : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		distance = Vector3.Distance(transform.position, player1.transform.position);
-		distance2 = Vector3.Distance(transform.position, player2.transform.position);
+		distance = Vector3.Distance (transform.position, player1.transform.position);
+		distance2 = Vector3.Distance (transform.position, player2.transform.position);
 		if (distanceToOpen >= distance || distanceToOpen >= distance2) {
-
-			if (Input.GetKeyDown (KeyCode.E) || Input.GetKeyDown (KeyCode.L)) {
-				Debug.Log ("Button pressed");
-				audioSource.PlayOneShot (activateSound);
-
-
-
-				//CHANGE BUTTON COLOURS
-				if (offButton.GetComponent<Renderer> ().material.color == Color.red) {
-					offButton.GetComponent<Renderer> ().material.color = Color.white;
-					onButton.GetComponent<Renderer> ().material.color = Color.green;
-
-				} else if (onButton.GetComponent<Renderer> ().material.color == Color.green) {
-					onButton.GetComponent<Renderer> ().material.color = Color.white;
-					offButton.GetComponent<Renderer> ().material.color = Color.red;
-
+			if (distanceToOpen >= distance) {
+				if (CrossPlatformInputManager.GetButtonDown ("Use")) {
+					Activate ();
 				}
-
-				if (door != null) {
-					if (door.GetComponent<OpenDoor> ().activateDoor == true) {
-						door.GetComponent<OpenDoor> ().activateDoor = false;
-					} else {
-						door.GetComponent<OpenDoor> ().activateDoor = true;
-					}
-
+			}
+			if (distanceToOpen >= distance2) {
+				if (CrossPlatformInputManager.GetButtonDown ("Use2")) {
+					Activate ();
 				}
-					
-				if (portal1 != null && portal2 != null) {
-					Debug.Log ("TRUE");
-					if (psActivated1.isStopped) {
-						psActivated1.Play ();
-					} else {
-						psActivated1.Stop ();
-					}
-					if (psActivated2.isStopped) {
-						psActivated2.Play ();
-					} else {
-						psActivated2.Stop ();
-					}
-
-					if (psSmoke1.isStopped) {
-						psSmoke1.Play ();
-					} else {
-						psSmoke1.Stop ();
-					}
-					if (psSmoke2.isStopped) {
-						psSmoke2.Play ();
-					} else {
-						psSmoke2.Stop ();
-					}
-					/*
-					psSmoke1.Play ();
-					psSmoke2.Play ();
-
-					if (psActivated1.isPlaying) {
-						psActivated1.Stop ();
-					}
-					if (psActivated2.isPlaying) {
-						psActivated2.Stop ();
-					}
-					if (psSmoke1.isPlaying) {
-						psSmoke1.Stop ();
-					}
-					if (psSmoke2.isPlaying) {
-						psSmoke2.Stop ();
-					}
-					*/
-				}
-
 			}
 
 		}
-		
 	}
+
+	void Activate(){
+		audioSource.PlayOneShot (activateSound);
+
+
+
+		//CHANGE BUTTON COLOURS
+		if (offButton.GetComponent<Renderer> ().material.color == Color.red) {
+			offButton.GetComponent<Renderer> ().material.color = Color.white;
+			onButton.GetComponent<Renderer> ().material.color = Color.green;
+
+		} else if (onButton.GetComponent<Renderer> ().material.color == Color.green) {
+			onButton.GetComponent<Renderer> ().material.color = Color.white;
+			offButton.GetComponent<Renderer> ().material.color = Color.red;
+
+		}
+
+		if (door != null) {
+			if (door.GetComponent<OpenDoor> ().activateDoor == true) {
+				door.GetComponent<OpenDoor> ().activateDoor = false;
+			} else {
+				door.GetComponent<OpenDoor> ().activateDoor = true;
+			}
+
+		}
+
+		if (portal1 != null && portal2 != null) {
+			Debug.Log ("TRUE");
+			if (psActivated1.isStopped) {
+				psActivated1.Play ();
+			} else {
+				psActivated1.Stop ();
+			}
+			if (psActivated2.isStopped) {
+				psActivated2.Play ();
+			} else {
+				psActivated2.Stop ();
+			}
+
+			if (psSmoke1.isStopped) {
+				psSmoke1.Play ();
+			} else {
+				psSmoke1.Stop ();
+			}
+			if (psSmoke2.isStopped) {
+				psSmoke2.Play ();
+			} else {
+				psSmoke2.Stop ();
+			}
+
+		}
+	}
+		
 }
+
