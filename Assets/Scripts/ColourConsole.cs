@@ -8,7 +8,7 @@ public class ColourConsole : MonoBehaviour {
 
 	public GameObject player1;
 	public GameObject player2;
-	private float distanceToOpen = 5;
+	private float distanceToOpen = 4;
 
 	private float distance;
 	private float distance2;
@@ -31,6 +31,10 @@ public class ColourConsole : MonoBehaviour {
 	public Material green;
 	public Material yellow;
 	public Material blue;
+	public Material magenta;
+	public Material red;
+	public Material orange;
+	public Material teal;
 	public Color[] colors;
 	//public Color[] colors = {Color.red, Color.blue, Color.yellow, Color.green, Color.magenta};
 	public Color currentColor;
@@ -39,7 +43,7 @@ public class ColourConsole : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		colors = new Color[]{Color.red, blue.color, yellow.color, Color.magenta, green.color };
+		colors = new Color[]{red.color, blue.color, yellow.color, magenta.color, green.color, orange.color, teal.color};
 		audioSource = GetComponent<AudioSource> ();
 
 		if (portal1 != null) {
