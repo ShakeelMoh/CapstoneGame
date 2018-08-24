@@ -35,7 +35,7 @@ public class ActivatePortal : MonoBehaviour {
 	void Update () {
 
 		if (gameObject.GetComponent<Renderer> ().material.color == player1.transform.Find ("Indicator").GetComponent<Renderer> ().material.color || gameObject.GetComponent<Renderer> ().material.color == player2.transform.Find ("Indicator").GetComponent<Renderer> ().material.color) {
-			Debug.Log ("Portal activated");
+			//Debug.Log ("Portal activated");
 			active = true;
 			portal1.GetComponent<PortalTeleporter> ().enabled = true;
 			portal2.GetComponent<PortalTeleporter> ().enabled = true;

@@ -59,7 +59,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 			if (CrossPlatformInputManager.GetButtonDown ("Reset2")) {
 				int level = levelTracker.gameObject.GetComponent<LevelTracker> ().level;
-				transform.position = levelSpawnAreas.transform.Find (level + "").position;
+				this.transform.position = levelSpawnAreas.transform.Find (level + "").position;
 				//transform.position = otherPlayer.transform.position + new Vector3 (0, 5, 0);
 
 			}

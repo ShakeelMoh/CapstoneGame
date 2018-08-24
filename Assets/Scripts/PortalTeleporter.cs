@@ -22,11 +22,13 @@ public class PortalTeleporter : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (colourChecker.GetComponent<ActivatePortal> ().active) {
-			other.transform.position = otherPortal.transform.position - otherPortal.transform.up * placementOffset;
+			if (other.transform.Find ("Indicator").GetComponent<Renderer> ().material.color == colourChecker.GetComponent<Renderer> ().material.color) {
+				other.transform.position = otherPortal.transform.position - otherPortal.transform.up * placementOffset;
 
-			if (sameWall) {
-				other.attachedRigidbody.velocity *= -1;
-				other.transform.Rotate (0, 180, 0);
+				if (sameWall) {
+					other.attachedRigidbody.velocity *= -1;
+					other.transform.Rotate (0, 180, 0);
+				}
 			}
 		}
 	}
