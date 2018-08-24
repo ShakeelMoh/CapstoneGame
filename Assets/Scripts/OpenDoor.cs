@@ -6,7 +6,7 @@ public class OpenDoor : MonoBehaviour {
 	private Animator anim;
 	public GameObject player1;
 	public GameObject player2;
-	private float distanceToOpen = 5;
+	public float distanceToOpen = 5;
 	private int characterNearbyHash = Animator.StringToHash("character_nearby");
 	private float distance;
 	private float distance2;
