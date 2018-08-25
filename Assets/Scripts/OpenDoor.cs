@@ -11,8 +11,10 @@ public class OpenDoor : MonoBehaviour {
 	private float distance;
 	private float distance2;
 	public AudioClip openSound;
+	public AudioClip openAnnouncer;
+	bool playedAnnouncer = false;
 	public AudioSource audioSource;
-	public float volume = 1.0f;
+	public float volume = 0.5f;
 	bool playSound;
 
 	public bool autoOpen;
@@ -36,7 +38,8 @@ public class OpenDoor : MonoBehaviour {
 			if (distanceToOpen >= distance || distanceToOpen >= distance2) {
 				anim.SetBool (characterNearbyHash, true);
 				if (playSound) {
-					audioSource.PlayOneShot (openSound, volume);
+					audioSource.PlayOneShot (openAnnouncer, volume);
+					audioSource.PlayOneShot (openSound, 0.3f);
 					playSound = false;
 				}
 			} else {
@@ -62,8 +65,14 @@ public class OpenDoor : MonoBehaviour {
 
 
 			if (pressurePlate) {
+				
 				if (activateDoor) {
 					//Debug.Log ("Open door");
+					//Debug.Log("WTF");
+					if (!playedAnnouncer) {
+						playedAnnouncer = true;
+						audioSource.PlayOneShot (openAnnouncer, 1.0f);
+					}
 					anim.SetBool (characterNearbyHash, true);
 				} else {
 					//Debug.Log ("Close Door");
@@ -73,5 +82,9 @@ public class OpenDoor : MonoBehaviour {
 		
 
 		}
+	}
+
+	IEnumerator waitForAnnouncer(){
+		yield return new WaitForSeconds (2);
 	}
 }
