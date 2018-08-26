@@ -13,20 +13,28 @@ public class SingleCamSwitch : MonoBehaviour {
 	public GameObject singleCam;
 	public Image screenDivider;
 
+	// Update is called once per frame
+	void Update () {
+
+	}
+
 	void OnCollisionEnter(Collision other){
 
-		//only do if the active camera is the split cam
-		//sets split cams off and turns on single cam
-		if (!singleCam.activeSelf) {
+		if (other.gameObject.tag == "Player") {
+
+			//only do if the active camera is the split cam
+			//sets split cams off and turns on single cam
+			if (!singleCam.activeSelf) {
 
 
-			splitCam1.SetActive (false);
-			splitCam2.SetActive (false);
+				splitCam1.SetActive (false);
+				splitCam2.SetActive (false);
 
-			singleCam.SetActive (true);
+				singleCam.SetActive (true);
 
-			//turn off screen divider
-			screenDivider.enabled = false;
-		} 
+				//turn off screen divider
+				screenDivider.enabled = false;
+			}
+		}
 }
 }
