@@ -23,7 +23,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		private void Start()
 		{
-			airControl = 10;
+			//airControl = 10;
 			// get the transform of the main camera
 			if (Camera.main != null)
 			{

@@ -19,6 +19,7 @@ public class NextLevel : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
+		Debug.Log (transform.position);
 		Debug.Log ("Changing level");
 		if (changed == false) {
 			Debug.Log ("Changing level");

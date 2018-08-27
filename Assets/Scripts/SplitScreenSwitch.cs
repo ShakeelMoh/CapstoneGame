@@ -18,7 +18,7 @@ public class SplitScreenSwitch : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter(Collision other){
+	void OnTriggerEnter(Collider other){
 
 		if (other.gameObject.tag == "Player") {
 			//only do if the active camera is the single cam

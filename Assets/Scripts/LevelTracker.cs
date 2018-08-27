@@ -11,6 +11,7 @@ public class LevelTracker : MonoBehaviour {
 	public Vector3 newOffSet;
 
 	public void incLevel(){
+		Debug.Log ("INCREMENTED");
 		level++;
 	}
 
