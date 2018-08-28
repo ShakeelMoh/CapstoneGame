@@ -18,10 +18,14 @@ public class ColourFloor : MonoBehaviour {
 
 	private int touchCounter;
 
+	public ParticleSystem floorGlow;
+
 	// Use this for initialization
 	void Start () {
 		colors = new Color[]{red.color, blue.color, yellow.color, magenta.color, green.color, white.color };
 		otherTileColour = otherTile.GetComponent<ColourFloor>().pressedColour;
+		floorGlow = this.transform.Find ("FloorGlow").GetComponent<ParticleSystem> ();
+		floorGlow.Stop ();
 	}
 	
 	// Update is called once per frame
@@ -32,6 +36,7 @@ public class ColourFloor : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 		touchCounter++;
 		this.GetComponent<Renderer> ().material = pressedColour;
+		floorGlow.Play ();
 		if (this.GetComponent<Renderer> ().material.color == otherTile.GetComponent<Renderer> ().material.color) {
 			Debug.Log ("GOING TO DO SOMETHING");
 			doSomething (1.0f);
@@ -46,6 +51,9 @@ public class ColourFloor : MonoBehaviour {
 
 	void OnCollisionExit(Collision other){
 		touchCounter--;
+		if (floorGlow.isPlaying) {
+			floorGlow.Stop ();
+		}
 		if (touchCounter == 0) {
 			this.GetComponent<Renderer> ().material.color = white.color;
 		}
