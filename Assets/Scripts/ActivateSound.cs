@@ -25,6 +25,7 @@ public class ActivateSound : MonoBehaviour {
 		Debug.Log ("Play");
 		audioSource.clip = audioClips [clip];
 		audioSource.PlayOneShot (audioClips[clip], 1.0f);
+
 	}
 
 

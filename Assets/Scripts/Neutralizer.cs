@@ -25,6 +25,7 @@ public class Neutralizer : MonoBehaviour {
 			player2.transform.Find ("Indicator").gameObject.GetComponent<Renderer> ().material.color = Color.white;
 			p1 = false;
 			p2 = false;
+			Destroy (this);
 		}
 	}
 
