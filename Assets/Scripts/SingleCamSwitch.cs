@@ -13,20 +13,29 @@ public class SingleCamSwitch : MonoBehaviour {
 	public GameObject singleCam;
 	public Image screenDivider;
 
+	public GameObject player1;
+	public GameObject player2;
+
+	bool p1;
+	bool p2;
 	// Update is called once per frame
 	void Update () {
 
 	}
 
-	void OnCollisionEnter(Collision other){
+	void OnTriggerEnter(Collider other){
 
-		if (other.gameObject.tag == "Player") {
-
+		if (other.gameObject == player1) {
+			p1 = true;
+		}
+		if (other.gameObject == player2) {
+			p2 = true;
+			Debug.Log ("TRUE2");
+		}
 			//only do if the active camera is the split cam
 			//sets split cams off and turns on single cam
+		if (p1 && p2) {
 			if (!singleCam.activeSelf) {
-
-
 				splitCam1.SetActive (false);
 				splitCam2.SetActive (false);
 
@@ -36,5 +45,5 @@ public class SingleCamSwitch : MonoBehaviour {
 				screenDivider.enabled = false;
 			}
 		}
-}
+	}
 }
