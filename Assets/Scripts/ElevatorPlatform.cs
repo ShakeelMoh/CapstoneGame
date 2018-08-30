@@ -27,7 +27,7 @@ public class ElevatorPlatform : MonoBehaviour {
 	void FixedUpdate () {//Fixed update runs at consistent interval. Update runs at fps interval.
 		if (activatedPlatform) {
 			this.transform.position = Vector3.Lerp (this.transform.position, newPositon, speed * Time.deltaTime);
-			MultipleTargetCamera.GetComponent<MultipleTargetCamera> ().maxY = yChange;
+			//MultipleTargetCamera.GetComponent<MultipleTargetCamera> ().maxY = yChange;
 
 		}
 	}

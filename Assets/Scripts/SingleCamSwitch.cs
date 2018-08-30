@@ -30,7 +30,6 @@ public class SingleCamSwitch : MonoBehaviour {
 		}
 		if (other.gameObject == player2) {
 			p2 = true;
-			Debug.Log ("TRUE2");
 		}
 			//only do if the active camera is the split cam
 			//sets split cams off and turns on single cam

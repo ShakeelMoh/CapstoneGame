@@ -8,6 +8,7 @@ public class NextLevel : MonoBehaviour {
 
 	bool changed;
 	public GameObject levelTracker;
+	public bool split;
 	void Start () {
 		//level = levelTracker.GetComponent<LevelTracker> ().level;
 		changed = false;
@@ -19,13 +20,15 @@ public class NextLevel : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log (transform.position);
-		Debug.Log ("Changing level");
-		if (changed == false) {
-			Debug.Log ("Changing level");
+		//Debug.Log (transform.position);
+		//Debug.Log ("Changing level");
+		if (changed == false && !split) {
+			
+			//Debug.Log ("Changing level");
 			levelTracker.GetComponent<LevelTracker> ().level++;
 			changed = true;
 		}
+
 	}
 
 }

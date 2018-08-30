@@ -22,7 +22,7 @@ public class ActivateSound : MonoBehaviour {
 	}
 
 	public void PlayClip(int clip){
-		Debug.Log ("Play");
+		//Debug.Log ("Play");
 		audioSource.clip = audioClips [clip];
 		audioSource.PlayOneShot (audioClips[clip], 1.0f);
 
