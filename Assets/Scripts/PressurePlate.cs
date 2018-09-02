@@ -6,6 +6,7 @@ public class PressurePlate : MonoBehaviour {
 
 	public GameObject door;
 	public GameObject platform;
+	public bool togglePlatform;
 	// Use this for initialization
 	void Start () {
 		if (door != null) {
@@ -26,10 +27,14 @@ public class PressurePlate : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other){
 		Debug.Log ("Pressure plate triggered");
+
 		if (door != null) {
 			door.GetComponent<OpenDoor> ().activateDoor = true;
 		}
 		if (platform != null) {
+			if (togglePlatform) {
+				platform.GetComponent<MovingPlatform> ().activatedPlatform = true;
+			}
 			platform.GetComponent<MovingPlatform> ().activatedPlatform = true;
 		}
 	}
@@ -40,7 +45,9 @@ public class PressurePlate : MonoBehaviour {
 			door.GetComponent<OpenDoor> ().activateDoor = false;
 		}
 		if (platform != null) {
-			platform.GetComponent<MovingPlatform> ().activatedPlatform = false;
+			if (!togglePlatform) {
+				platform.GetComponent<MovingPlatform> ().activatedPlatform = false;
+			}
 		}
 	}
 }

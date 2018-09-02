@@ -65,14 +65,24 @@ public class LevelTracker : MonoBehaviour {
 		}
 
 		if (level == 8) {
-			Debug.Log ("LEVEL 8");
+			//Debug.Log ("LEVEL 8");
 			newOffSet = new Vector3 (-35, 120, 0);
 			multicam.GetComponent<MultipleTargetCamera> ().setOffset (newOffSet);
 			multicam.GetComponent<MultipleTargetCamera> ().maxZoom = 80;
 			multicam.GetComponent<MultipleTargetCamera> ().maxY = 35;
+			multicam.GetComponent<MultipleTargetCamera> ().zoomLimiter = 680;
 		}
 
 		if (level == 9) {
+			newOffSet = new Vector3 (-35, 9, 0);
+			multicam.GetComponent<MultipleTargetCamera> ().setOffset (newOffSet);
+			multicam.GetComponent<MultipleTargetCamera> ().zoomLimiter = 70;
+			multicam.GetComponent<MultipleTargetCamera> ().maxZoom = 70;
+			multicam.GetComponent<MultipleTargetCamera> ().maxY = 50;
+
+		}
+
+		if (level == 10) {
 			newOffSet = new Vector3 (-35, 30, 0);
 			multicam.GetComponent<MultipleTargetCamera> ().setOffset (newOffSet);
 			multicam.GetComponent<MultipleTargetCamera> ().maxZoom = 70;
