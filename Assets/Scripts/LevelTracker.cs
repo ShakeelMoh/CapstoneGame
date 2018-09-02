@@ -52,11 +52,11 @@ public class LevelTracker : MonoBehaviour {
 
 			if (p1Cam != null && p2Cam != null) {
 				if (p1Cam.isActiveAndEnabled && p2Cam.isActiveAndEnabled) {
-					p1Cam.GetComponent<MultipleTargetCamera> ().maxY = 35;
-					p1Cam.GetComponent<MultipleTargetCamera> ().maxY = 35;
+					//p1Cam.GetComponent<MultipleTargetCamera> ().maxY = 35;
+					//p1Cam.GetComponent<MultipleTargetCamera> ().maxY = 35;
 				}
 			} else {
-				multicam.GetComponent<MultipleTargetCamera> ().maxY = 9;
+				//multicam.GetComponent<MultipleTargetCamera> ().maxY = 9;
 			}
 
 		}
@@ -69,12 +69,12 @@ public class LevelTracker : MonoBehaviour {
 			newOffSet = new Vector3 (-35, 120, 0);
 			multicam.GetComponent<MultipleTargetCamera> ().setOffset (newOffSet);
 			multicam.GetComponent<MultipleTargetCamera> ().maxZoom = 80;
-			multicam.GetComponent<MultipleTargetCamera> ().maxY = 35;
+			multicam.GetComponent<MultipleTargetCamera> ().maxY = 33;
 			multicam.GetComponent<MultipleTargetCamera> ().zoomLimiter = 680;
 		}
 
 		if (level == 9) {
-			newOffSet = new Vector3 (-35, 9, 0);
+			newOffSet = new Vector3 (-35, 20, 0);
 			multicam.GetComponent<MultipleTargetCamera> ().setOffset (newOffSet);
 			multicam.GetComponent<MultipleTargetCamera> ().zoomLimiter = 70;
 			multicam.GetComponent<MultipleTargetCamera> ().maxZoom = 70;
