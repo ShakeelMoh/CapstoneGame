@@ -33,9 +33,9 @@ public class RoomDestruction : MonoBehaviour {
 			}
 
 			//destroy all fallen pieces
-			for (int i = 0; i < fallingOrder.Count; i++) {
-				Destroy (fallingOrder [i]);
-			}
+		//	for (int i = 0; i < fallingOrder.Count; i++) {
+		//		Destroy (fallingOrder [i]);
+		//	}
 		}
 	}
 
