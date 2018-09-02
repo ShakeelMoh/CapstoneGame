@@ -5,6 +5,15 @@ using UnityEngine;
 //Used on moving platform
 //When object collides with platform, make platform the parent of the object
 public class HoldCharacter : MonoBehaviour {
+	/*
+	void OnCollisionEnter(Collision other){
+		other.transform.parent = gameObject.transform;
+	}
+
+	void OnCollisionrExit(Collision other){
+		other.transform.parent = null;
+	}
+	*/
 
 	void OnTriggerEnter(Collider other){
 		other.transform.parent = gameObject.transform;
@@ -13,4 +22,5 @@ public class HoldCharacter : MonoBehaviour {
 	void OnTriggerExit(Collider other){
 		other.transform.parent = null;
 	}
+
 }
