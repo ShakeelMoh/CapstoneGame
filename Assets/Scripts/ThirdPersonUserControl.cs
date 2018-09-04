@@ -51,7 +51,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				float h = Input.GetAxis ("Horizontal");
 				float v = Input.GetAxis ("Vertical");
 				Vector3 moveDirection = new Vector3 ((v * airControl), 0, (h * -(airControl)));
-				this.GetComponent<Rigidbody>().AddForce (moveDirection);
+				//this.GetComponent<Rigidbody>().AddForce (moveDirection);
 				if (m_Jump) {
 					jumpState++;
 
