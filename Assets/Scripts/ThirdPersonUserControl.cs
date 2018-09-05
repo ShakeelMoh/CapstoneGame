@@ -43,7 +43,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Update()
         {
-			
+			Vector3 scale = new Vector3 (1.951169f, 1.951168f, 1.951168f);
+
+			if (transform.localScale != scale) {
+
+			}
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
@@ -51,7 +55,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				float h = Input.GetAxis ("Horizontal");
 				float v = Input.GetAxis ("Vertical");
 				Vector3 moveDirection = new Vector3 ((v * airControl), 0, (h * -(airControl)));
-				//this.GetComponent<Rigidbody>().AddForce (moveDirection);
+				this.GetComponent<Rigidbody>().AddForce (moveDirection);
 				if (m_Jump) {
 					jumpState++;
 

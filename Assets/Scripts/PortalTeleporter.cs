@@ -26,8 +26,12 @@ public class PortalTeleporter : MonoBehaviour {
 				other.transform.position = otherPortal.transform.position - otherPortal.transform.up * placementOffset;
 
 				if (sameWall) {
-					
-					other.attachedRigidbody.velocity *= -1;
+					Vector3 v3 = other.attachedRigidbody.velocity;
+					v3.z *= -1;
+					v3.x *= -1;
+					other.attachedRigidbody.velocity = v3;
+					//other.attachedRigidbody.velocity *= -1;
+					Debug.Log(v3.ToString());
 					other.transform.Rotate (0, 180, 0);
 				}
 			}

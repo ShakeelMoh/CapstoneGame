@@ -72,7 +72,7 @@ public class ColourConsole : MonoBehaviour {
 		if (distanceToOpen >= distance || distanceToOpen >= distance2) {
 			if (distanceToOpen >= distance) {
 				if (CrossPlatformInputManager.GetButtonDown ("Use")){
-					//Debug.Log ("Button pressed");
+					
 					audioSource.PlayOneShot (activateSound);
 					if (colorCounter < colors.Length) {
 						button.GetComponent<Renderer> ().material.color = colors [colorCounter];
@@ -105,6 +105,10 @@ public class ColourConsole : MonoBehaviour {
 						baseColor2.GetComponent<ParticleSystem> ().Play ();
 
 						colorCounter++;
+						if (colorCounter > 6) {
+							colorCounter = 0;
+
+						}
 					} else {
 						colorCounter = 0;
 						button.GetComponent<Renderer> ().material.color = colors [colorCounter];
