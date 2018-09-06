@@ -14,7 +14,7 @@ public class OpenDoor : MonoBehaviour {
 	public AudioClip openAnnouncer;
 	bool playedAnnouncer = false;
 	public AudioSource audioSource;
-	public float volume = 0.5f;
+	public float volume = 0.1f;
 	bool playSound;
 
 	public bool autoOpen;
@@ -25,6 +25,7 @@ public class OpenDoor : MonoBehaviour {
 	void Start () {
 		anim = gameObject.GetComponent<Animator> ();
 		audioSource = GetComponent<AudioSource> ();
+		audioSource.volume = 0.1f;
 		playSound = true;
 		activateDoor = false;
 	}
@@ -39,7 +40,7 @@ public class OpenDoor : MonoBehaviour {
 				anim.SetBool (characterNearbyHash, true);
 				if (playSound) {
 					audioSource.PlayOneShot (openAnnouncer, volume);
-					audioSource.PlayOneShot (openSound, 0.3f);
+					audioSource.PlayOneShot (openSound, volume);
 					playSound = false;
 				}
 			} else {
@@ -71,7 +72,7 @@ public class OpenDoor : MonoBehaviour {
 					//Debug.Log("WTF");
 					if (!playedAnnouncer) {
 						playedAnnouncer = true;
-						audioSource.PlayOneShot (openAnnouncer, 1.0f);
+						audioSource.PlayOneShot (openAnnouncer, 0.1f);
 					}
 					anim.SetBool (characterNearbyHash, true);
 				} else {
