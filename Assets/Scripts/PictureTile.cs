@@ -19,7 +19,6 @@ public class PictureTile : MonoBehaviour {
 	public int c = 0;
 	public GameObject otherTile;
 	public ParticleSystem floorGlow;
-
 	public bool correct;
 	// Use this for initialization
 	void Start () {
@@ -41,12 +40,15 @@ public class PictureTile : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision other){
+	IEnumerator OnCollisionEnter(Collision other){
 				
 		this.GetComponent<Renderer> ().material = materials [c];
 		currentColour = materials [c];
 		//floorGlow.Play ();
 		otherTile.GetComponent<Renderer> ().material = materials[c];
+	
+		yield return new WaitForSeconds (2);
+
 		if (c < materials.Length - 1) {
 			c++;
 		} else {

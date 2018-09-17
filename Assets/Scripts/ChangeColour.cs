@@ -12,7 +12,7 @@ public class ChangeColour : MonoBehaviour {
 	public int lives;
 
 	public bool rotateColours;
-	public int interval;
+	public float interval;
 	public Material green;
 	public Material yellow;
 	public Material blue;
@@ -76,7 +76,7 @@ public class ChangeColour : MonoBehaviour {
 		}
 	}
 
-	IEnumerator colourChange(int interval){
+	IEnumerator colourChange(float interval){
 		while (true) {
 			if (currentColour > colors.Length - 1) {
 				currentColour = 0;
