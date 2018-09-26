@@ -7,7 +7,7 @@ public class RailCamera : MonoBehaviour {
 
 	void Start ()
 	{
-		nodeCount = transform.GetChildCount();
+		nodeCount = transform.childCount;
 		nodes = new Vector3[nodeCount];
 
 		for (int i = 0; i < nodeCount; i++)
