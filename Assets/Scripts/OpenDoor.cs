@@ -79,6 +79,9 @@ public class OpenDoor : MonoBehaviour {
 					//Debug.Log ("Close Door");
 					anim.SetBool (characterNearbyHash, false);
 				}
+               
+                
+
 			}
 		
 
