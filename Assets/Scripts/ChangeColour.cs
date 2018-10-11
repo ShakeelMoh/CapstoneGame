@@ -18,6 +18,7 @@ public class ChangeColour : MonoBehaviour {
 	public Material blue;
 	public Color[] colors;
 	public ParticleSystem glow;
+    public GameObject electricOrb;
 
 	int currentColour = 0;
 
@@ -42,7 +43,9 @@ public class ChangeColour : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 
 		if (other.tag == "Player") {
-			other.transform.Find("Indicator").gameObject.GetComponent<Renderer>().material.color = this.GetComponent<Renderer>().material.GetColor ("_Color");
+            Color pickupColor = this.GetComponent<Renderer>().material.GetColor("_Color");
+            other.transform.Find("Indicator").gameObject.GetComponent<Renderer>().material.color = pickupColor;
+            other.transform.Find("Indicator").gameObject.GetComponent<Renderer>().materials[1].SetColor("_OutlineColor", pickupColor);
 			//other.transform.GetChild("Indicator").GetComponent<Renderer>().material.color = this.GetComponent<Renderer>().material.GetColor ("_Color");
 			//other.GetComponent<Renderer> ().material.color = this.GetComponent<Renderer>().material.GetColor ("_Color");
 			//gameObject.SetActive (false);
@@ -62,14 +65,18 @@ public class ChangeColour : MonoBehaviour {
 		gameObject.GetComponent<Renderer> ().enabled = false;
 		gameObject.GetComponent<Collider> ().enabled = false;
 		gameObject.transform.Find("Glow").GetComponent<ParticleSystem> ().Stop ();
+        electricOrb.transform.Find("ElectricCircle").GetComponent<ParticleSystem>().Stop();
+        electricOrb.transform.Find("ElectricParticles").GetComponent<ParticleSystem>().Stop();
 
-		if (respawn) {
+        if (respawn) {
 			if (lives > 0) {
 				lives--;
 				yield return new WaitForSeconds (respawnDelay);
 				Debug.Log ("Respawning");
 				gameObject.transform.Find ("Glow").GetComponent<ParticleSystem> ().Play ();
-				gameObject.GetComponent<Renderer> ().enabled = true;
+                electricOrb.transform.Find("ElectricCircle").GetComponent<ParticleSystem>().Play();
+                electricOrb.transform.Find("ElectricParticles").GetComponent<ParticleSystem>().Play();
+                gameObject.GetComponent<Renderer> ().enabled = true;
 				gameObject.GetComponent<Collider> ().enabled = true;
 
 			}
