@@ -18,6 +18,7 @@ public class ChangeColour : MonoBehaviour {
 	public Material blue;
 	public Color[] colors;
 	public ParticleSystem glow;
+    public ParticleSystem groundPS;
     public GameObject electricOrb;
 
 	int currentColour = 0;
@@ -98,7 +99,17 @@ public class ChangeColour : MonoBehaviour {
 			//Debug.Log (red + " " + green + " " + blue);
 			main.startColor = glowRGB;
 
-			yield return new WaitForSeconds (interval);
+            var electricCircle = electricOrb.transform.Find("ElectricCircle").GetComponent<ParticleSystem>().main;
+            var electricParticles = electricOrb.transform.Find("ElectricParticles").GetComponent<ParticleSystem>().main;
+            electricCircle.startColor = glowRGB;
+            electricParticles.startColor = glowRGB;
+
+            var ground = groundPS.main;
+            ground.startColor = glowRGB;
+
+
+
+            yield return new WaitForSeconds (interval);
 			currentColour++;
 
 		}
