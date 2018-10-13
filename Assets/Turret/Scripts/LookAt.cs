@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAt : MonoBehaviour {
+public class LookAt : MonoBehaviour
+{
 
     public Transform target;
     public float damping;
@@ -12,13 +13,16 @@ public class LookAt : MonoBehaviour {
     public Transform firePoint;
     public float range;
     public string playerTag = "Player";
+    public GameObject projectile;
+    public float projectileSpeed = 2.0f;
 
     private float fireCountdown;
     private float wait;
     private bool bPlay;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         colourBeam.enabled = false;
         colourParticles.Stop();
         fireCountdown = 1.0f;
@@ -52,10 +56,11 @@ public class LookAt : MonoBehaviour {
 
     }
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (target != null)
         {
-            var lookPos = target.position - transform.position;
+            var lookPos = new Vector3(target.position.x, target.position.y + 2.0f, target.position.z) - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos) * Quaternion.Euler(0, offset, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
@@ -65,18 +70,22 @@ public class LookAt : MonoBehaviour {
             //if (transform.rotation == rotation) { 
             colourBeam.enabled = true;
             colourBeam.SetPosition(0, firePoint.position);
-            colourBeam.SetPosition(1, target.position);
+            colourBeam.SetPosition(1, new Vector3(target.position.x, target.position.y + 2.0f, target.position.z));
 
-            
 
-            if (fireCountdown <= 0f&&!bPlay)
+
+            if (fireCountdown <= 0f && !bPlay)
             {
-                Vector3 dir = target.position - firePoint.position;
+                /*Vector3 dir = target.position - firePoint.position;
                 colourParticles.transform.position = firePoint.position;
                 colourParticles.transform.rotation = Quaternion.LookRotation(dir);
-                colourParticles.Play();
+                colourParticles.Play();*/
+                var projectileLook = new Vector3(target.position.x, target.position.y + 2.0f, target.position.z) - firePoint.position;
+                var projectileRotation = Quaternion.LookRotation(-projectileLook) * Quaternion.Euler(0, offset, 0);
+                GameObject shoot = (GameObject)Instantiate(projectile, firePoint.position, projectileRotation);
+                shoot.GetComponent<Rigidbody>().velocity = projectileLook.normalized * projectileSpeed;
                 bPlay = true;
-                
+
             }
 
             if (bPlay)
@@ -90,17 +99,18 @@ public class LookAt : MonoBehaviour {
                 }
                 wait -= Time.deltaTime;
             }
-            
+
 
             fireCountdown -= Time.deltaTime;
 
-        } else
+        }
+        else
         {
             colourBeam.enabled = false;
             colourParticles.Stop();
         }
-        
-	}
+
+    }
 
     private void OnDrawGizmosSelected()
     {
