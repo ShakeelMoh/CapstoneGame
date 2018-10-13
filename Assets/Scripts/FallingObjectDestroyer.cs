@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //falling objects that hit this get destroyed, and if its a player they get respawned
-
+using UnityStandardAssets.Characters.ThirdPerson;
 public class FallingObjectDestroyer : MonoBehaviour {
 
     public GameObject levelTracker; //To keep track of current level
@@ -15,8 +15,12 @@ public class FallingObjectDestroyer : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            int level = levelTracker.gameObject.GetComponent<LevelTracker>().level;
-            transform.position = levelSpawnAreas.transform.Find(level + "").position;
+            if (col.gameObject.name == "PLAYER 2")
+            {
+                Player2.GetComponent<Player2UserControl>().playerReset();
+            }
+            else
+                col.gameObject.GetComponent<ThirdPersonUserControl>().playerReset();
         }
         else
             Destroy(col.gameObject);

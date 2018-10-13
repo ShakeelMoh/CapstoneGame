@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreateInvisWall : MonoBehaviour {
     
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerExit(Collider col)
     {
         GetComponent<Collider>().isTrigger = false;
     }

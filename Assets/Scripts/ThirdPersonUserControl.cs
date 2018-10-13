@@ -68,8 +68,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 
 			if (CrossPlatformInputManager.GetButtonDown ("Reset1")) {
-				int level = levelTracker.gameObject.GetComponent<LevelTracker> ().level;
-				transform.position = levelSpawnAreas.transform.Find (level + "").position;
+                playerReset();
 				//transform.position = otherPlayer.transform.position + new Vector3 (0, 5, 0);
 
 			}
@@ -104,6 +103,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // pass all parameters to the character control script
 			m_Character.Move(m_Move, crouch, m_Jump, jumpState);
             m_Jump = false;
+        }
+
+        //puts the player back to the reset point
+        public void playerReset()
+        {
+            int level = levelTracker.gameObject.GetComponent<LevelTracker>().level;
+            transform.position = levelSpawnAreas.transform.Find(level + "").position;
         }
     }
 }
