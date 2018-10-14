@@ -105,7 +105,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             //level 10 has different spawns for each player depending on what the players choose
             if (level == 11)
             {
-                if (lvl10spawn == "top")
+                if (lvl11spawn == "top")
                 {
                     transform.position = levelSpawnAreas.transform.Find(11.1 + "").position;
                 }
