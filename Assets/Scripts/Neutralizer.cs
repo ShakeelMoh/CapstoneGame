@@ -22,8 +22,10 @@ public class Neutralizer : MonoBehaviour {
 	void Update () {
 		if (p1 && p2) {
 			player1.transform.Find ("Indicator").gameObject.GetComponent<Renderer> ().material.color = Color.white;
-			player2.transform.Find ("Indicator").gameObject.GetComponent<Renderer> ().material.color = Color.white;
-			p1 = false;
+            player1.transform.Find("Indicator").gameObject.GetComponent<Renderer>().materials[1].SetColor("_OutlineColor", Color.white);
+            player2.transform.Find ("Indicator").gameObject.GetComponent<Renderer> ().material.color = Color.white;
+            player2.transform.Find("Indicator").gameObject.GetComponent<Renderer>().materials[1].SetColor("_OutlineColor", Color.white);
+            p1 = false;
 			p2 = false;
 			Destroy (this);
 		}
