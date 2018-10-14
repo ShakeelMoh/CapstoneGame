@@ -129,7 +129,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             if (level == 6)
             {
-                if (lvl6spawn == "top")
+                if (lvl6spawn == "1st")
                 {
                     transform.position = levelSpawnAreas.transform.Find(6.1 + "").position;
                 }
