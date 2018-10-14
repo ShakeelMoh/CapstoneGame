@@ -52,7 +52,7 @@ public class ChangeColour : MonoBehaviour {
 			//gameObject.SetActive (false);
 			//Debug.Log(other.GetComponent<Renderer>().material.color + " is new color");
 			audioSource.PlayOneShot (pickupSound, volume);
-	
+            Debug.Log("HELLO");
 			StartCoroutine (Respawn (respawnDelay));
 			
 

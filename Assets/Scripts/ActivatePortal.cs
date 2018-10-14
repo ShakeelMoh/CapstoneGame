@@ -49,8 +49,10 @@ public class ActivatePortal : MonoBehaviour {
 			}
 
 		} else {
+            Debug.Log(gameObject.GetComponent<Renderer>().material.color + " --" + player1.transform.Find("Indicator").GetComponent<Renderer>().material.color);
 			portal1.GetComponent<PortalTeleporter> ().enabled = false;
 			portal2.GetComponent<PortalTeleporter> ().enabled = false;
+            
 			active = false;
 			if (psSmoke1.isPlaying) {
 				psSmoke1.Stop ();
