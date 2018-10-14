@@ -16,16 +16,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		public GameObject levelTracker; //To keep track of current level
 		public GameObject levelSpawnAreas;
-		public GameObject otherPlayer;
+        public string lvl11spawn;
+        public GameObject otherPlayer;
 		public float airControl;//controls aircontrol
 		//SHAKEEL EDIT
 		public int jumpState;
 
 		private void Start()
 		{
-			//airControl = 10;
-			// get the transform of the main camera
-			if (Camera.main != null)
+            lvl11spawn = "bot";
+            //airControl = 10;
+            // get the transform of the main camera
+            if (Camera.main != null)
 			{
 				m_Cam = Camera.main.transform;
 			}
@@ -99,7 +101,19 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public void playerReset()
         {
             int level = levelTracker.gameObject.GetComponent<LevelTracker>().level;
-            transform.position = levelSpawnAreas.transform.Find(level + "").position;
+
+            //level 10 has different spawns for each player depending on what the players choose
+            if (level == 11)
+            {
+                if (lvl10spawn == "top")
+                {
+                    transform.position = levelSpawnAreas.transform.Find(11.1 + "").position;
+                }
+                else
+                    transform.position = levelSpawnAreas.transform.Find(11.2 + "").position;
+            }
+            else
+                transform.position = levelSpawnAreas.transform.Find(level + "").position;
         }
     }
-}
+    }

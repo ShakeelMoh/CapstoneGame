@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityStandardAssets.Characters.ThirdPerson;
+using UnityStandardAssets.Characters.ThirdPerson;
+
+
 public class NextLevel : MonoBehaviour {
 
 	// Use this for initialization
@@ -27,6 +29,17 @@ public class NextLevel : MonoBehaviour {
 			//Debug.Log ("Changing level");
 			levelTracker.GetComponent<LevelTracker> ().level++;
 			changed = true;
+
+            //set which player spawns on top and the bottom
+            if (levelTracker.GetComponent<LevelTracker>().level == 11)
+            {
+                if (other.gameObject.name == "PLAYER 1")
+                {
+                    other.GetComponent<ThirdPersonUserControl>().lvl11spawn = "top";
+                }
+                else
+                    other.GetComponent<Player2UserControl>().lvl11spawn = "top";
+            }
 		}
 
 	}
