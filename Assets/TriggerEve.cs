@@ -8,8 +8,9 @@ public class TriggerEve : MonoBehaviour {
     public GameObject eve;
     public GameObject target;
     public GameObject target2;
-	// Use this for initialization
-	void Start () {
+    public int waitTime;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -18,8 +19,9 @@ public class TriggerEve : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter(Collider other)
+    IEnumerator OnTriggerEnter(Collider other)
     {
+        yield return new WaitForSeconds(waitTime);
         eve.gameObject.GetComponent<AICharacterControl>().target = target.transform;
         eve.gameObject.transform.LookAt(target2.transform);
     }

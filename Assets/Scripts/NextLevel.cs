@@ -40,7 +40,16 @@ public class NextLevel : MonoBehaviour {
                 else
                     other.GetComponent<Player2UserControl>().lvl11spawn = "top";
             }
-		}
+            if (levelTracker.GetComponent<LevelTracker>().level == 6)
+            {
+                if (other.gameObject.name == "PLAYER 1")
+                {
+                    other.GetComponent<ThirdPersonUserControl>().lvl6spawn = "1st";
+                }
+                else
+                    other.GetComponent<Player2UserControl>().lvl6spawn = "1st";
+            }
+        }
 
 	}
 
