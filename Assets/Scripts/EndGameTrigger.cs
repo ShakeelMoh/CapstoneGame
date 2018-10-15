@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+
 
 public class EndGameTrigger : MonoBehaviour {
 
@@ -16,6 +18,6 @@ public class EndGameTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        //TONY CODE HERE
+        SceneManager.LoadScene("End Screen");
     }
 }
