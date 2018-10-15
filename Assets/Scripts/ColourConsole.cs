@@ -8,6 +8,7 @@ public class ColourConsole : MonoBehaviour {
 
 	public GameObject player1;
 	public GameObject player2;
+    //Distance player should be from consoles
 	private float distanceToOpen = 4;
 
 	private float distance;
@@ -26,8 +27,10 @@ public class ColourConsole : MonoBehaviour {
 	private ParticleSystem psSmoke1;
 	private ParticleSystem psSmoke2;
 
+    //Reference to colour checker
 	public GameObject colourChecker;
 
+    //Colours
 	public Material green;
 	public Material yellow;
 	public Material blue;
@@ -67,6 +70,7 @@ public class ColourConsole : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //Checks if players collide and triggers respawn/despawn
 		distance = Vector3.Distance(transform.position, player1.transform.position);
 		distance2 = Vector3.Distance(transform.position, player2.transform.position);
 		if (distanceToOpen >= distance || distanceToOpen >= distance2) {

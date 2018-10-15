@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DisableParticleSystem : MonoBehaviour {
 
-	// Use this for initialization
+	// Disables particle system.
 	void Start () {
 		
 		gameObject.GetComponent<ParticleSystem> ().Stop ();

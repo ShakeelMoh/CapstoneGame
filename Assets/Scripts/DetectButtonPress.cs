@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+
 //Detects button press when within proximity to gameobject
 public class DetectButtonPress : MonoBehaviour {
 

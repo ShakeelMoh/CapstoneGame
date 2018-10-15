@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//CCTV Camera movement.
 public class CCTVCamera : MonoBehaviour {
 
 	public Transform target;

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Main pickup class
 public class ChangeColour : MonoBehaviour {
 
-
+    
 	public float respawnDelay;
 	public AudioClip pickupSound;
 	public AudioSource audioSource;
@@ -11,6 +12,7 @@ public class ChangeColour : MonoBehaviour {
 	public bool respawn;
 	public int lives;
 
+    //If a rotating colours pickup
 	public bool rotateColours;
 	public float interval;
 	public Material green;
@@ -42,7 +44,7 @@ public class ChangeColour : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other){
-
+        //If player walks into pickup
 		if (other.tag == "Player") {
             Color pickupColor = this.GetComponent<Renderer>().material.GetColor("_Color");
             other.transform.Find("Indicator").gameObject.GetComponent<Renderer>().material.color = pickupColor;
@@ -52,7 +54,6 @@ public class ChangeColour : MonoBehaviour {
 			//gameObject.SetActive (false);
 			//Debug.Log(other.GetComponent<Renderer>().material.color + " is new color");
 			audioSource.PlayOneShot (pickupSound, volume);
-            Debug.Log("HELLO");
 			StartCoroutine (Respawn (respawnDelay));
 			
 
@@ -61,6 +62,7 @@ public class ChangeColour : MonoBehaviour {
 
 		}
 
+    //Respawn function
 	IEnumerator Respawn(float respawnDelay){
 
 		gameObject.GetComponent<Renderer> ().enabled = false;
@@ -84,6 +86,7 @@ public class ChangeColour : MonoBehaviour {
 		}
 	}
 
+    //Rotates between colours
 	IEnumerator colourChange(float interval){
 		while (true) {
 			if (currentColour > colors.Length - 1) {

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Opens door for player if certain conditions are met.
 public class OpenDoor : MonoBehaviour {
 
 	private Animator anim;

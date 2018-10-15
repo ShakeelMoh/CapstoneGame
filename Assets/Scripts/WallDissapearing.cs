@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Destroys fallen walls
 public class WallDissapearing : MonoBehaviour {
 
     public List<GameObject> walls; //all the objects to fall in order

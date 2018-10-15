@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//This class is no longer used. Ignore
 public class CameraMover : MonoBehaviour {
 
-	// VARIABLES
-	//
+	
 
 	public float turnSpeed = 4.0f;		// Speed of camera turning when mouse moves in along an axis
 	public float panSpeed = 4.0f;		// Speed of the camera when being panned

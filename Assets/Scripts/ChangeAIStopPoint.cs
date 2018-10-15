@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 
+//Changes Eves walking to spot
 public class ChangeAIStopPoint : MonoBehaviour {
 
 	public GameObject robotAI;

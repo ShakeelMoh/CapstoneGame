@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-
+//Changes current level when players collide with trigger.
 public class NextLevel : MonoBehaviour {
 
 	// Use this for initialization

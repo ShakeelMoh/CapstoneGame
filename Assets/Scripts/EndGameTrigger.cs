@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 
+//Triggers the end game screen
 public class EndGameTrigger : MonoBehaviour {
 
 	// Use this for initialization

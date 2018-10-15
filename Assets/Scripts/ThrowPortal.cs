@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//Not used
 public class ThrowPortal : MonoBehaviour {
 
 	public GameObject leftPortal;

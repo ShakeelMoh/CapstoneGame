@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
+//Checks if player is near eve. Allows them to interact with her with the use button
 public class EveInteract : MonoBehaviour {
 
     public GameObject player1;

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
+//Script which handles menu .
 public class MenuScript : MonoBehaviour {
 
 

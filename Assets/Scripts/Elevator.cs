@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Elevator script. Moves elevator up or down when both players are inside
 public class Elevator : MonoBehaviour {
 
 	public GameObject door;
