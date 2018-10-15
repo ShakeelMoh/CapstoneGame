@@ -31,14 +31,14 @@ public class NextLevel : MonoBehaviour {
 			changed = true;
 
             //set which player spawns on top and the bottom
-            if (levelTracker.GetComponent<LevelTracker>().level == 11)
+            if (levelTracker.GetComponent<LevelTracker>().level == 12)
             {
                 if (other.gameObject.name == "PLAYER 1")
                 {
-                    other.GetComponent<ThirdPersonUserControl>().lvl11spawn = "top";
+                    other.GetComponent<ThirdPersonUserControl>().lvl12spawn = "top";
                 }
                 else
-                    other.GetComponent<Player2UserControl>().lvl11spawn = "top";
+                    other.GetComponent<Player2UserControl>().lvl12spawn = "top";
             }
             if (levelTracker.GetComponent<LevelTracker>().level == 6)
             {
