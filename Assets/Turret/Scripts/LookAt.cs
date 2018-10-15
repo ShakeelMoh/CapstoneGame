@@ -14,7 +14,7 @@ public class LookAt : MonoBehaviour
     public float range;
     public string playerTag = "Player";
     public GameObject projectile;
-    public float projectileSpeed = 2.0f;
+    public float projectileSpeed;
 
     private float fireCountdown;
     private float wait;
