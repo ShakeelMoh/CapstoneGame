@@ -35,6 +35,7 @@ public class NextLevel : MonoBehaviour {
             {
                 if (other.gameObject.name == "PLAYER 1")
                 {
+                    
                     other.GetComponent<ThirdPersonUserControl>().lvl13spawn = "top";
                 }
                 else
