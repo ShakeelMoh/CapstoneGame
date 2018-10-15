@@ -122,7 +122,7 @@ public class LevelTracker : MonoBehaviour {
 
         }
 
-		if (level == 13) {
+		if (level == 14) {
 			newOffSet = new Vector3 (-60, 15, 0);
             if (p1Cam.isActiveAndEnabled && p2Cam.isActiveAndEnabled)
             {
